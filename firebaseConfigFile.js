@@ -1,7 +1,6 @@
 /* eslint-disable prettier/prettier */
 
 const admin = require("firebase-admin");
-const data = require("./firebaseConfig.json");
 const config = {
   credential: admin.credential.cert(
     /*data */ {
