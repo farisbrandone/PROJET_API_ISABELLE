@@ -1,9 +1,10 @@
 # API_PROJECT_ISABELLE
 
-API d'interaction avec le backend de firebase pour la gestion des utilisateur
-CONSIGNE D'UTILISATION DE L'API
+# API d'interaction avec le backend de firebase pour la gestion des utilisateur
 
-POINT DE TERMINAISON PRESENT DANS L'API:
+# CONSIGNE D'UTILISATION DE L'API
+
+# POINT DE TERMINAISON PRESENT DANS L'API:
 
 \*\* point1: domainName/auth/login
 
