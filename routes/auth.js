@@ -15,6 +15,7 @@ router.post("/login", async (req, res) => {
       return res.status(401).json({ error: "Authentication failed" });
     }
     const user = await firebaseConfig.auth().getUserByEmail(email);
+    console.log(user);
     const token = jwt.sign({ userEmail: user.email }, process.env.SECRET_KEY, {
       expiresIn: "1h",
     });
