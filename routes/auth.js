@@ -38,4 +38,8 @@ router.get("/verify_email/:email", async (req, res) => {
   res.status(200).json({ value: true });
 });
 
+router.get("/get_admin_uid", async (req, res) => {
+  res.status(200).json({ admin_id: process.env.SECRET_KEY });
+});
+
 module.exports = router;

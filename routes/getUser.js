@@ -40,10 +40,6 @@ router.get("/one_user/:email", async (req, res) => {
   }
 });
 
-router.get("/get_admin_uid", async (req, res) => {
-  res.status(200).json({ admin_id: process.env.SECRET_KEY });
-});
-
 router.post("/create_user", async (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) {
