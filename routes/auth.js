@@ -10,12 +10,12 @@ router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
     console.log(req.body);
-
-    if (email !== process.env.EMAIL || password !== process.env.PASSWORD) {
+    const user = await firebaseConfig.auth().getUserByEmail(email);
+    //console.log(user);
+    if (email !== process.env.EMAIL || password !== user.uid) {
       return res.status(401).json({ error: "Authentication failed" });
     }
-    const user = await firebaseConfig.auth().getUserByEmail(email);
-    console.log(user);
+
     const token = jwt.sign({ userEmail: user.email }, process.env.SECRET_KEY, {
       expiresIn: "1h",
     });
@@ -36,10 +36,6 @@ router.get("/verify_email/:email", async (req, res) => {
   }
 
   res.status(200).json({ value: true });
-});
-
-router.get("/get_admin_uid", async (req, res) => {
-  res.status(200).json({ admin_id: process.env.SECRET_KEY });
 });
 
 module.exports = router;

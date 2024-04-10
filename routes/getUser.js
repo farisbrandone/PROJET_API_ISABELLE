@@ -117,4 +117,13 @@ router.get("/desable_user/:email", async (req, res) => {
   }
 });
 
+router.get("/get_admin_uid", async (req, res) => {
+  try {
+    const user = await firebaseConfig.auth().getUserByEmail(process.env.EMAIL);
+    res.status(200).json({ admin_id: user.uid });
+  } catch (error) {
+    res.status(500).json({ error: "Get admin uid failed" });
+  }
+});
+
 module.exports = router;
