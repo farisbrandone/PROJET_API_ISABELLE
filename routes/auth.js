@@ -11,7 +11,7 @@ router.post("/login", async (req, res) => {
     const { email, password } = req.body;
     console.log(req.body);
     const user = await firebaseConfig.auth().getUserByEmail(email);
-    //console.log(user);
+    console.log(user);
     if (email !== process.env.EMAIL || password !== user.uid) {
       return res.status(401).json({ error: "Authentication failed" });
     }
@@ -23,7 +23,7 @@ router.post("/login", async (req, res) => {
     res.set("Authorization", `Bearer ${token}`);
     res.status(200).send({ token });
   } catch (error) {
-    res.status(500).json({ error: "Login failed" });
+    res.status(500).json(error);
   }
 });
 
