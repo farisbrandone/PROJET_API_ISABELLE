@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 
 const admin = require("firebase-admin");
+
 const dotenv = require("dotenv");
 dotenv.config();
 const config = {
@@ -17,6 +18,7 @@ const config = {
     client_x509_cert_url: process.env.FIREBASE_CERT_URL,
     universe_domain: process.env.FIREBASE_UNIVERSE_DOMAIN,
   }),
+  projectId: "un-truc-de-jesus-carte",
 };
 
 const firebase =
