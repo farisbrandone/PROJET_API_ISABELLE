@@ -8,13 +8,13 @@ dotenv.config();
 
 router.post("/login", async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { email, password2 } = req.body;
     console.log(req.body);
     const user = await firebaseConfig.auth().getUserByEmail(process.env.EMAIL);
     console.log(user);
     console.log(email, process.env.EMAIL);
-    console.log(password, user.uid);
-    if (email !== process.env.EMAIL || password !== user.uid) {
+    console.log(password2, user.uid);
+    if (email !== process.env.EMAIL || password2 !== user.uid) {
       return res.status(401).json({ error: "Authentication failed" });
     }
 
