@@ -12,6 +12,7 @@ router.post("/login", async (req, res) => {
     console.log(req.body);
     const user = await firebaseConfig.auth().getUserByEmail(process.env.EMAIL);
     console.log(user);
+    console.log(email !== process.env.EMAIL || password !== user.uid);
     if (email !== process.env.EMAIL || password !== user.uid) {
       return res.status(401).json({ error: "Authentication failed" });
     }
