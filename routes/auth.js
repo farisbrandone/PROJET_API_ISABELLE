@@ -15,7 +15,7 @@ router.post("/login", async (req, res) => {
     console.log(email, process.env.EMAIL);
     console.log(password2, user.uid);
     if (email !== process.env.EMAIL || password2 !== user.uid) {
-      return res.status(401).json({ error: "Authentication failed" });
+      return res.status(500).json({ error: "Authentication failed" });
     }
 
     const token = jwt.sign({ userEmail: user.email }, process.env.SECRET_KEY, {
